@@ -5,14 +5,19 @@ import { Grid, Box } from "@mui/material";
 import Textfield from "./Textfield/textfield";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [open, setOpen] = React.useState(false);
-  const [error, setError] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleClick = () => {
     setOpen(true);
@@ -41,24 +46,12 @@ export default function Login() {
     } catch (error) {
       // alert("This is an error message!");
       // alert(error.message);
+      setErrorMessage(error.message);
       handle();
     } finally {
       setLoading(false);
     }
   };
-
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        X
-      </IconButton>
-    </React.Fragment>
-  );
   return (
     <Box sx={{ flexGrow: 1 }} className="container">
       <Grid container spacing={2} justifyContent="center">
@@ -71,20 +64,30 @@ export default function Login() {
             <br />
           </Grid>
           <Grid item>
-            <Snackbar
-              open={open}
-              autoHideDuration={6000}
-              onClose={handleClose}
-              message="Welcome"
-              action={action}
-            />
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                This is a success message!
+              </Alert>
+            </Snackbar>
             <Snackbar
               open={error}
               autoHideDuration={6000}
               onClose={handleClose}
-              message="Incorrect Credentials"
-              action={action}
-            />
+            >
+              <Alert
+                onClose={handleClose}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                {errorMessage === "Request Failed"
+                  ? "Please check internet connection"
+                  : errorMessage}
+              </Alert>
+            </Snackbar>
           </Grid>
           <Grid item xs={12} md={12}>
             <Textfield

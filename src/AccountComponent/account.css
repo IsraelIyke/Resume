@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 0 2rem 0 2rem;
+  background-color: white;
+  color: black;
+  box-shadow: 0 0rem 0.2rem gray;
+  z-index: 2;
+}
+.header h3 a {
+  color: black;
+  text-decoration: none;
+}
+/* account-container */
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

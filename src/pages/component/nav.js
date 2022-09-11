@@ -24,7 +24,7 @@ export default function Nav() {
             </h3>
             <nav ref={navRef}>
               <Link to="/">Home</Link>
-              <Link to="/auth">Login</Link>
+              <Link to="/account">Login</Link>
             </nav>
             {move ? (
               <button className="nav-btn" onClick={showNavbar}>

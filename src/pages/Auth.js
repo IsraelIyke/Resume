@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Account from "./Account";
 import Login from "./login";
-// import Register from "./register";
 import { supabase } from "../client";
 
 export default function Auth() {

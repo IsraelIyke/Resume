@@ -13,7 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/account" element={<Auth />} />
           <Route path="*" element={<P404 />} />
         </Routes>
       </Router>

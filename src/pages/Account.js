@@ -1,103 +1,36 @@
-import { useEffect, useState } from "react";
-import PersonalAvatar from "./PersonalAvatar";
-import { supabase } from "../client";
+import Nav from "../AccountComponent/nav";
+import "../AccountComponent/account.css";
+import BasicInfo from "../AccountComponent/BasicInfo";
+import Dashboard from "../AccountComponent/Dashboard";
+import { useState } from "react";
+import { Grid, Box } from "@mui/material";
 
 export default function Account({ session }) {
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
-
-  useEffect(() => {
-    getProfile();
-  }, [session]);
-
-  async function getProfile() {
-    try {
-      setLoading(true);
-      const user = supabase.auth.user();
-
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, website, avatar_url`)
-        .eq("id", user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-      if (data) {
-        setUsername(data.username);
-        setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function updateProfile({ username, website, avatar_url }) {
-    try {
-      setLoading(true);
-      const user = supabase.auth.user();
-      const updates = {
-        id: user.id,
-        username,
-        website,
-        avatar_url,
-        updated_at: new Date(),
-      };
-
-      let { error } = await supabase.from("profile").upsert(updates, {
-        returning: "minimal", //don't return the value after inserting
-      });
-
-      if (error) {
-        throw error;
-      }
-
-      alert("updated");
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
+  const [home, setHome] = useState(true);
+  const [basicInfo, setBasicInfo] = useState(false);
+  function handleBasicInfo() {
+    setHome(false);
+    setBasicInfo(true);
   }
   return (
-    <>
-      <div>
-        <PersonalAvatar
-          url={avatar_url}
-          onUpload={(url) => {
-            setAvatarUrl(url);
-            updateProfile({ username, website, avatar_url: url });
-          }}
-        />
-      </div>
-      <br />
-      <div>{session.user.email}</div>
-      <div>
-        <input
-          type="text"
-          value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder={username || "username"}
-        />
-        <br />
-        <input
-          type="text"
-          value={website || ""}
-          onChange={(e) => setWebsite(e.target.value)}
-          placeholder={website || "website"}
-        />
-      </div>
-      <button onClick={() => supabase.auth.signOut()}>Logout</button>
-      <br />
-      <button onClick={() => updateProfile({ username, website, avatar_url })}>
-        {loading || "update"}
-      </button>
-    </>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item xs={12}>
+          <Nav key={session.user.id} session={session} />
+        </Grid>
+        <Grid item xs={12} className="account-container">
+          {home && (
+            <Dashboard
+              key={session.user.id}
+              session={session}
+              handleBasicInfo={handleBasicInfo}
+            />
+          )}
+        </Grid>
+        <Grid item xs={12} className="account-container">
+          {basicInfo && <BasicInfo key={session.user.id} session={session} />}
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
