@@ -67,7 +67,7 @@ export default function Login() {
         </Grid>
         <form className="form-container">
           <Grid item>
-            <h2>Sign Up</h2>
+            <h2>Sign In</h2>
             <br />
           </Grid>
           <Grid item>
