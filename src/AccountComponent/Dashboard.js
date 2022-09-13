@@ -1,14 +1,14 @@
 import { Grid, Box } from "@mui/material";
-import bg from "../images/bg.jpg";
+import bg from "../images/bg2.png";
 
 export default function Dashboard({ session, handleBasicInfo }) {
   return (
-    <Box>
-      <Grid container>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={1}>
         <Grid item xs={12} className="account-container">
           <div>Welcome {session.user.email}</div>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} className="account-container">
           <img src={bg} alt="resume" width={400} height={400} />
         </Grid>
         <Grid item xs={12} className="account-container">

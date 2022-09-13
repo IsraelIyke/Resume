@@ -14,7 +14,7 @@ export default function Home() {
         </Grid>
         <Grid item xs={11} sm={7} md={6}>
           <div className="detail">
-            <h1>Resume Generator</h1>
+            <h1>Resume Builder</h1>
             Create your resume easily with cVit. cVit offers a simple and
             friendly user interface with numerous themes to choose from and edit
             to your liking

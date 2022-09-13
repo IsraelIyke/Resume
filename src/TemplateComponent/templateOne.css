@@ -1,0 +1,45 @@
+/* template-A4-container */
+.template-A4-container {
+  width: 595px;
+  height: 842px;
+  border: 1px solid black;
+  margin: 0 0 2rem 0;
+  background-color: white;
+}
+.name-detail {
+  margin: 0.8rem;
+}
+.name-detail h3 {
+  margin-bottom: 0.3rem;
+  color: blue;
+}
+.name-detail h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: rgb(75, 73, 73);
+}
+.name-detail p {
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+  margin-top: 0.8rem;
+}
+.temp-social {
+  display: flex;
+}
+.temp-email {
+  display: flex;
+  align-items: center;
+}
+.email-icon {
+  margin-top: 3px;
+  color: blue;
+}
+.temp-linkedin {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+.linkedin-icon {
+  margin-top: 2px;
+  color: blue;
+}
