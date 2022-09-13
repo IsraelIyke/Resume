@@ -5,20 +5,43 @@ import Dashboard from "../AccountComponent/Dashboard";
 import { useState } from "react";
 import { Grid, Box, Paper } from "@mui/material";
 import TemplateOne from "../AccountComponent/TemplateOne";
+import Skill from "../AccountComponent/Skill";
+import BgInfo from "../AccountComponent/BgInfo";
 
 export default function Account({ session }) {
   const [home, setHome] = useState(true);
   const [basicInfo, setBasicInfo] = useState(false);
   const [templateOne, setTemplateOne] = useState(false);
+  const [skill, setSkill] = useState(false);
+  const [bgInfo, setBgInfo] = useState(false);
+
   function handleBasicInfo() {
     setHome(false);
     setBasicInfo(true);
     setTemplateOne(false);
+    setSkill(false);
+    setBgInfo(false);
   }
   function handleTemplateOne() {
     setHome(false);
     setBasicInfo(false);
     setTemplateOne(true);
+    setSkill(false);
+    setBgInfo(false);
+  }
+  function handleSkill() {
+    setHome(false);
+    setBasicInfo(false);
+    setTemplateOne(false);
+    setSkill(true);
+    setBgInfo(false);
+  }
+  function handleBgInfo() {
+    setHome(false);
+    setBasicInfo(false);
+    setTemplateOne(false);
+    setSkill(false);
+    setBgInfo(true);
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -30,10 +53,10 @@ export default function Account({ session }) {
           <Paper className="account-side">
             <h4>Infomation</h4>
             <p onClick={handleBasicInfo}>Contact Info</p>
-            <p>Background Brief</p>
+            <p onClick={handleBgInfo}>Background Brief</p>
             <p>Work History</p>
             <p>Education</p>
-            <p>Skills</p>
+            <p onClick={handleSkill}>Skills</p>
             <p>Language</p>
             <h4>Template</h4>
             <p onClick={handleTemplateOne}>Template One</p>
@@ -59,6 +82,12 @@ export default function Account({ session }) {
             {templateOne && (
               <TemplateOne key={session.user.id} session={session} />
             )}
+          </Grid>
+          <Grid item xs={12} className="account-container">
+            {skill && <Skill key={session.user.id} session={session} />}
+          </Grid>
+          <Grid item xs={12} className="account-container">
+            {bgInfo && <BgInfo key={session.user.id} session={session} />}
           </Grid>
         </Grid>
       </Grid>

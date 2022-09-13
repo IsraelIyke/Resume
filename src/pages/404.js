@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import React from "react";
-import img404 from "../images/404.png";
+import img404 from "../images/404i.png";
 import Nav from "./component/nav";
 
 export const P404 = () => {

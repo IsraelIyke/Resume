@@ -2,9 +2,10 @@
 .template-A4-container {
   width: 595px;
   height: 842px;
-  border: 1px solid black;
+  border: 1px solid blue;
   margin: 0 0 2rem 0;
   background-color: white;
+  word-spacing: 0.1px;
 }
 .name-detail {
   margin: 0.8rem;
@@ -41,5 +42,28 @@
 }
 .linkedin-icon {
   margin-top: 2px;
+  color: blue;
+}
+.temp-skill {
+  width: fit-content;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  background-color: blue;
+  color: white;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  /*  */
+  overflow-wrap: break-word;
+  line-break: auto;
+}
+.temp-skill-container {
+  margin: 0.8rem;
+}
+.temp-skill-list {
+  display: flex;
+  align-items: center;
+}
+.temp-skill-container h3 {
+  margin-bottom: 0.5rem;
   color: blue;
 }

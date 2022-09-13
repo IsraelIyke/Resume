@@ -69,7 +69,9 @@
 .input-container h2 {
   margin: 4rem 0 1rem 0;
 }
-
+.bg-info {
+  height: 10rem;
+}
 @media screen and (max-width: 899px) {
   .acc-container {
     display: flex;
