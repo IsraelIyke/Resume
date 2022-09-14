@@ -226,12 +226,12 @@ export default function WorkExp({ session }) {
     }
   }
   return (
-    <div>
+    <div className="work-exp-container">
       <div className="input-container">
         <h2>Work Experience</h2>
       </div>
       <div className="ac-container">
-        {counts < 4 && (
+        {counts < 3 && (
           <div className="input-container column">
             <h4>Work Experience One</h4>
 
@@ -245,7 +245,7 @@ export default function WorkExp({ session }) {
             />
           </div>
         )}
-        {counts < 4 && (
+        {counts < 3 && (
           <div className="input-container">
             <Textfield
               type="text"
@@ -257,7 +257,7 @@ export default function WorkExp({ session }) {
             />
           </div>
         )}
-        {counts < 4 && (
+        {counts < 3 && (
           <div className="input-container">
             <Datefield
               type="date"
@@ -279,19 +279,19 @@ export default function WorkExp({ session }) {
         )}
 
         <div className="input-container">
-          {count1 < 2 && (
+          {counts < 3 && count1 < 2 && (
             <button onClick={handleCount1Add} className="signup-button">
               Add Achievement
             </button>
           )}
-          {count1 > 0 && count1 < 3 && (
+          {counts < 3 && count1 > 0 && count1 < 3 && (
             <button onClick={handleCount1Minus} className="signup-button">
               Remove Achievement
             </button>
           )}
         </div>
 
-        {counts < 4 && count1 < 4 && (
+        {counts < 3 && count1 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
@@ -303,7 +303,7 @@ export default function WorkExp({ session }) {
             />
           </div>
         )}
-        {counts < 4 && count1 > 0 && count1 < 4 && (
+        {counts < 3 && count1 > 0 && count1 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
@@ -315,7 +315,7 @@ export default function WorkExp({ session }) {
             />
           </div>
         )}
-        {counts < 4 && count1 > 1 && count1 < 4 && (
+        {counts < 3 && count1 > 1 && count1 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
@@ -357,7 +357,7 @@ export default function WorkExp({ session }) {
             />
           </div>
         )}
-        {counts > 0 && counts < 4 && (
+        {counts > 0 && counts < 3 && (
           <div className="input-container">
             <Datefield
               type="date"
@@ -379,51 +379,51 @@ export default function WorkExp({ session }) {
         )}
 
         <div className="input-container">
-          {count1 < 2 && (
-            <button onClick={handleCount1Add} className="signup-button">
+          {counts > 0 && counts < 3 && count2 < 2 && (
+            <button onClick={handleCount2Add} className="signup-button">
               Add Achievement
             </button>
           )}
-          {count1 > 0 && count1 < 3 && (
-            <button onClick={handleCount1Minus} className="signup-button">
+          {counts > 0 && counts < 3 && count2 > 0 && count2 < 3 && (
+            <button onClick={handleCount2Minus} className="signup-button">
               Remove Achievement
             </button>
           )}
         </div>
 
-        {counts < 4 && count1 < 4 && (
+        {counts > 0 && counts < 3 && count2 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
               placeholder="Achievement One. Please limit to 15 words"
-              id="ach1a"
+              id="ach2a"
               label="Achievement One"
-              setState={setAch1a}
-              value={ach1a}
+              setState={setAch2a}
+              value={ach2a}
             />
           </div>
         )}
-        {counts < 4 && count1 > 0 && count1 < 4 && (
+        {counts > 0 && counts < 3 && count2 > 0 && count2 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
               placeholder="Achievement Two. Please limit to 15 words"
-              id="ach1b"
-              label="Achievement Four"
-              setState={setAch1b}
-              value={ach1b}
+              id="ach2b"
+              label="Achievement Two"
+              setState={setAch2b}
+              value={ach2b}
             />
           </div>
         )}
-        {counts < 4 && count1 > 1 && count1 < 4 && (
+        {counts > 0 && counts < 3 && count2 > 1 && count2 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
               placeholder="Achievement Three. Please limit to 15 words"
-              id="ach1c"
+              id="ach3c"
               label="Achievement Three"
-              setState={setAch1c}
-              value={ach1c}
+              setState={setAch2c}
+              value={ach3c}
             />
           </div>
         )}
@@ -431,99 +431,99 @@ export default function WorkExp({ session }) {
 
       {/* Three */}
       <div className="ac-container">
-        {counts > 0 && counts < 4 && (
+        {counts > 1 && counts < 3 && (
           <div className="input-container column">
-            <h4>Work Experience One</h4>
+            <h4>Work Experience Three</h4>
 
             <Textfield
               type="text"
-              placeholder="Experience One"
-              id="exp1"
-              label="Experience One"
-              setState={setExp1}
-              value={exp1}
+              placeholder="Experience Three"
+              id="exp3"
+              label="Experience Three"
+              setState={setExp3}
+              value={exp3}
             />
           </div>
         )}
-        {counts > 0 && counts < 4 && (
+        {counts > 1 && counts < 3 && (
           <div className="input-container">
             <Textfield
               type="text"
               placeholder="Company"
-              id="company1"
+              id="company3"
               label="Company"
-              setState={setExp1}
-              value={company1}
+              setState={setCompany3}
+              value={company3}
             />
           </div>
         )}
-        {counts > 0 && counts < 4 && (
+        {counts > 1 && counts < 3 && (
           <div className="input-container">
             <Datefield
               type="date"
               placeholder="From"
-              id="from1"
+              id="from3"
               label="From"
-              setState={setFrom1}
-              value={from1}
+              setState={setFrom3}
+              value={from3}
             />
             <Datefield
               type="date"
               placeholder="To"
-              id="to1"
+              id="to3"
               label="To"
-              setState={setTo1}
-              value={to1}
+              setState={setTo3}
+              value={to3}
             />
           </div>
         )}
 
         <div className="input-container">
-          {count1 < 3 && (
-            <button onClick={handleCount1Add} className="signup-button">
+          {counts > 1 && counts < 3 && count3 < 3 && (
+            <button onClick={handleCount3Add} className="signup-button">
               Add Achievement
             </button>
           )}
-          {count1 > 0 && count1 < 4 && (
-            <button onClick={handleCount1Minus} className="signup-button">
+          {counts > 1 && counts < 3 && count3 > 0 && count3 < 3 && (
+            <button onClick={handleCount3Minus} className="signup-button">
               Remove Achievement
             </button>
           )}
         </div>
 
-        {counts < 4 && count1 < 4 && (
+        {counts > 1 && counts < 3 && count3 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
               placeholder="Achievement One. Please limit to 15 words"
-              id="ach1a"
+              id="ach3a"
               label="Achievement One"
-              setState={setAch1a}
-              value={ach1a}
+              setState={setAch3a}
+              value={ach3a}
             />
           </div>
         )}
-        {counts < 4 && count1 > 0 && count1 < 4 && (
+        {counts > 1 && counts < 3 && count3 > 0 && count3 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
               placeholder="Achievement Two. Please limit to 15 words"
-              id="ach1b"
-              label="Achievement Four"
-              setState={setAch1b}
-              value={ach1b}
+              id="ach3b"
+              label="Achievement Two"
+              setState={setAch3b}
+              value={ach3b}
             />
           </div>
         )}
-        {counts < 4 && count1 > 1 && count1 < 4 && (
+        {counts > 1 && counts < 3 && count3 > 1 && count3 < 3 && (
           <div className="input-container">
             <Inputfield
               type="text"
               placeholder="Achievement Three. Please limit to 15 words"
-              id="ach1c"
+              id="ach3c"
               label="Achievement Three"
-              setState={setAch1c}
-              value={ach1c}
+              setState={setAch3c}
+              value={ach3c}
             />
           </div>
         )}
