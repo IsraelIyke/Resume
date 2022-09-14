@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../client";
-import Textfield from "../pages/Textfield/textfield";
 // import { Grid, Box } from "@mui/material";
+import Inputfield from "./Inputfield/inputfield";
 
 export default function BgInfo({ session }) {
   const [loading, setLoading] = useState(true);
@@ -10,6 +10,13 @@ export default function BgInfo({ session }) {
   useEffect(() => {
     getProfile();
   }, [session]);
+
+  const word = bgInfo + "";
+  // const ar = Array.from(word);
+  // const str = ar.length;
+  // console.log(str);
+  const myArray = word.split(" ");
+  const wordCount = myArray.length;
 
   async function getProfile() {
     try {
@@ -35,7 +42,7 @@ export default function BgInfo({ session }) {
     }
   }
 
-  async function updateProfile({ firstName }) {
+  async function updateProfile({ bgInfo }) {
     //
     try {
       setLoading(true);
@@ -66,9 +73,15 @@ export default function BgInfo({ session }) {
       <div className="input-container">
         <h2>Background Brief</h2>
       </div>
+      <div className="input-container">
+        <h5>Word limit: 30</h5>
+      </div>
+      <div className="input-container">
+        <h5>Word Used: {wordCount}</h5>
+      </div>
       <div className="acc-container">
         <div className="input-container">
-          <Textfield
+          <Inputfield
             type="text"
             placeholder="Background Brief"
             id="bgInfo"

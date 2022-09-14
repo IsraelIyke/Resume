@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../client";
-import PersonalAvatar from "../pages/PersonalAvatar";
 import Textfield from "../pages/Textfield/textfield";
 // import { Grid, Box } from "@mui/material";
 
@@ -9,7 +8,7 @@ export default function BasicInfo({ session }) {
   const [firstName, setFirstName] = useState(null); //
   const [lastName, setLastName] = useState(null);
   const [profession, setProfession] = useState(null);
-  const [city, setCity] = useState(null);
+  const [country, setCountry] = useState(null);
   const [states, setState] = useState(null);
   const [zipCode, setZipCode] = useState(null);
   const [phone, setPhone] = useState(null);
@@ -29,7 +28,7 @@ export default function BasicInfo({ session }) {
         .select(
           `firstName, lastName,
         profession,
-        city,
+        country,
         states,
         zipCode,
         phone,
@@ -45,7 +44,7 @@ export default function BasicInfo({ session }) {
         setFirstName(data.firstName); //
         setLastName(data.lastName);
         setProfession(data.profession);
-        setCity(data.city);
+        setCountry(data.country);
         setState(data.states);
         setZipCode(data.zipCode);
         setPhone(data.phone);
@@ -69,7 +68,7 @@ export default function BasicInfo({ session }) {
         firstName, //
         lastName,
         profession,
-        city,
+        country,
         states,
         zipCode,
         phone,
@@ -133,11 +132,11 @@ export default function BasicInfo({ session }) {
         <div className="input-container">
           <Textfield
             type="text"
-            placeholder="City"
-            id="city"
-            label="City"
-            setState={setCity}
-            value={city}
+            placeholder="country"
+            id="country"
+            label="country"
+            setState={setCountry}
+            value={country}
           />
         </div>
       </div>
@@ -193,7 +192,7 @@ export default function BasicInfo({ session }) {
               firstName,
               lastName,
               profession,
-              city,
+              country,
               states,
               zipCode,
               phone,

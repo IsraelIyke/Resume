@@ -24,6 +24,17 @@ export default function Skill({ session }) {
   }
   function handleCountMinus() {
     setCount((prev) => prev - 1);
+    if (count === 2) setSkill3(null);
+    if (count === 1) setSkill2(null);
+    if (count === 3) setSkill4(null);
+    if (count === 4) setSkill5(null);
+    if (count === 5) setSkill6(null);
+    if (count === 6) setSkill7(null);
+    if (count === 7) setSkill8(null);
+    if (count === 8) setSkill9(null);
+    if (count === 9) setSkill10(null);
+    if (count === 10) setSkill11(null);
+    if (count === 11) setSkill12(null);
   }
   useEffect(() => {
     getProfile();
@@ -67,7 +78,21 @@ export default function Skill({ session }) {
     }
   }
 
-  async function updateProfile({ firstName }) {
+  async function updateProfile({
+    skill1,
+    skill2,
+    skill3,
+    skill4,
+    skill5,
+    skill6,
+    skill7,
+    skill8,
+    skill9,
+    skill10,
+    skill11,
+    skill12,
+    count,
+  }) {
     //
     try {
       setLoading(true);

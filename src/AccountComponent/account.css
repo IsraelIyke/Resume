@@ -45,6 +45,7 @@
 .account-side p {
   padding: 0.8rem;
   transition: 0.4s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .account-side p:hover {
   background-color: hsl(39, 77%, 96%);
@@ -71,6 +72,10 @@
 }
 .bg-info {
   height: 10rem;
+}
+.column {
+  display: flex;
+  flex-direction: column;
 }
 @media screen and (max-width: 899px) {
   .acc-container {

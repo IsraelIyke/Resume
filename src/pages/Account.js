@@ -7,6 +7,7 @@ import { Grid, Box, Paper } from "@mui/material";
 import TemplateOne from "../AccountComponent/TemplateOne";
 import Skill from "../AccountComponent/Skill";
 import BgInfo from "../AccountComponent/BgInfo";
+import WorkExp from "../AccountComponent/WorkExp";
 
 export default function Account({ session }) {
   const [home, setHome] = useState(true);
@@ -14,6 +15,7 @@ export default function Account({ session }) {
   const [templateOne, setTemplateOne] = useState(false);
   const [skill, setSkill] = useState(false);
   const [bgInfo, setBgInfo] = useState(false);
+  const [workExp, setWorkExp] = useState(false);
 
   function handleBasicInfo() {
     setHome(false);
@@ -21,6 +23,7 @@ export default function Account({ session }) {
     setTemplateOne(false);
     setSkill(false);
     setBgInfo(false);
+    setWorkExp(false);
   }
   function handleTemplateOne() {
     setHome(false);
@@ -28,6 +31,7 @@ export default function Account({ session }) {
     setTemplateOne(true);
     setSkill(false);
     setBgInfo(false);
+    setWorkExp(false);
   }
   function handleSkill() {
     setHome(false);
@@ -35,6 +39,7 @@ export default function Account({ session }) {
     setTemplateOne(false);
     setSkill(true);
     setBgInfo(false);
+    setWorkExp(false);
   }
   function handleBgInfo() {
     setHome(false);
@@ -42,6 +47,15 @@ export default function Account({ session }) {
     setTemplateOne(false);
     setSkill(false);
     setBgInfo(true);
+    setWorkExp(false);
+  }
+  function handleWorkExp() {
+    setHome(false);
+    setBasicInfo(false);
+    setTemplateOne(false);
+    setSkill(false);
+    setBgInfo(false);
+    setWorkExp(true);
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -54,9 +68,9 @@ export default function Account({ session }) {
             <h4>Infomation</h4>
             <p onClick={handleBasicInfo}>Contact Info</p>
             <p onClick={handleBgInfo}>Background Brief</p>
-            <p>Work History</p>
-            <p>Education</p>
             <p onClick={handleSkill}>Skills</p>
+            <p onClick={handleWorkExp}>Work Experience</p>
+            <p>Education</p>
             <p>Language</p>
             <h4>Template</h4>
             <p onClick={handleTemplateOne}>Template One</p>
@@ -88,6 +102,9 @@ export default function Account({ session }) {
           </Grid>
           <Grid item xs={12} className="account-container">
             {bgInfo && <BgInfo key={session.user.id} session={session} />}
+          </Grid>
+          <Grid item xs={12} className="account-container">
+            {workExp && <WorkExp key={session.user.id} session={session} />}
           </Grid>
         </Grid>
       </Grid>

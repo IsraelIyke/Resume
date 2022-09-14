@@ -6,6 +6,7 @@
   margin: 0 0 2rem 0;
   background-color: white;
   word-spacing: 0.1px;
+  position: relative;
 }
 .name-detail {
   margin: 0.8rem;
@@ -26,23 +27,32 @@
 }
 .temp-social {
   display: flex;
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 .temp-email {
   display: flex;
   align-items: center;
-}
-.email-icon {
-  margin-top: 3px;
-  color: blue;
+  margin-right: 1rem;
 }
 .temp-linkedin {
   display: flex;
   align-items: center;
-  margin-left: 1rem;
+  margin-right: 1rem;
 }
-.linkedin-icon {
-  margin-top: 2px;
-  color: blue;
+.temp-phone {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+.temp-location {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+.location-icon {
+  height: 24px;
+  width: 24px;
 }
 .temp-skill {
   width: fit-content;
@@ -52,9 +62,9 @@
   color: white;
   border-radius: 4px;
   margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   /*  */
-  overflow-wrap: break-word;
-  line-break: auto;
+  /* overflow-wrap: break-word; */
 }
 .temp-skill-container {
   margin: 0.8rem;
@@ -62,8 +72,20 @@
 .temp-skill-list {
   display: flex;
   align-items: center;
+  overflow-wrap: break-word;
+  line-break: auto;
 }
 .temp-skill-container h3 {
   margin-bottom: 0.5rem;
   color: blue;
+}
+.bg-info {
+  height: 5rem;
+}
+.ac-container {
+  display: flex;
+  flex-direction: column;
+}
+.temp-date {
+  width: 3rem;
 }
