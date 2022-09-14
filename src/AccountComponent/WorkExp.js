@@ -38,7 +38,7 @@ export default function WorkExp({ session }) {
   const [count3, setCount3] = useState(0);
 
   const [counts, setCounts] = useState(0);
-  console.log(count1);
+
   function handleCountAdd() {
     setCounts((prev) => prev + 1);
   }
@@ -54,8 +54,18 @@ export default function WorkExp({ session }) {
 
   function handleCountMinus() {
     setCounts((prev) => prev - 1);
-    if (counts === 1) setExp2(null);
-    if (counts === 2) setExp3(null);
+    if (counts === 1) {
+      setExp2(null);
+      setTo2(null);
+      setFrom2(null);
+      setCompany2(null);
+    }
+    if (counts === 2) {
+      setExp2(null);
+      setTo2(null);
+      setFrom2(null);
+      setCompany2(null);
+    }
   }
   function handleCount1Minus() {
     setCount1((prev) => prev - 1);
