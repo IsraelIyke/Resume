@@ -117,29 +117,29 @@ export default function WorkExp({ session }) {
       }
       if (data) {
         setExp1(data.exp1);
-        setCompany1(data.exp1);
-        setFrom1(data.exp1);
-        setTo1(data.exp1);
-        setAch1a(data.exp1);
-        setAch1b(data.exp1);
-        setAch1c(data.exp1);
-        setCount1(data.exp1);
-        setExp2(data.exp1);
-        setCompany2(data.exp1);
-        setFrom2(data.exp1);
-        setTo2(data.exp1);
-        setAch2a(data.exp1);
-        setAch2b(data.exp1);
-        setAch2c(data.exp1);
-        setCount2(data.exp1);
-        setExp3(data.exp1);
-        setCompany3(data.exp1);
-        setFrom3(data.exp1);
-        setTo3(data.exp1);
-        setAch3a(data.exp1);
-        setAch3b(data.exp1);
-        setAch3c(data.exp1);
-        setCount3(data.exp1);
+        setCompany1(data.company1);
+        setFrom1(data.from1);
+        setTo1(data.to1);
+        setAch1a(data.ach1a);
+        setAch1b(data.ach1b);
+        setAch1c(data.ach1c);
+        setCount1(data.count1);
+        setExp2(data.exp2);
+        setCompany2(data.company2);
+        setFrom2(data.from2);
+        setTo2(data.to2);
+        setAch2a(data.ach2a);
+        setAch2b(data.ach2b);
+        setAch2c(data.ach2c);
+        setCount2(data.count2);
+        setExp3(data.exp3);
+        setCompany3(data.company3);
+        setFrom3(data.from3);
+        setTo3(data.to3);
+        setAch3a(data.ach3a);
+        setAch3b(data.ach3b);
+        setAch3c(data.ach3c);
+        setCount3(data.count3);
         setCounts(data.counts);
       }
     } catch (error) {
