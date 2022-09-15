@@ -132,6 +132,18 @@ export default function Account({ session }) {
     setPassword(true);
     setTemplateTwo(false);
   }
+  function handleDashboard() {
+    setHome(true);
+    setBasicInfo(false);
+    setTemplateOne(false);
+    setSkill(false);
+    setBgInfo(false);
+    setWorkExp(false);
+    setEducation(false);
+    setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -235,6 +247,7 @@ export default function Account({ session }) {
                 key={session.user.id}
                 session={session}
                 handlePassword={handlePassword}
+                handleDashboard={handleDashboard}
               />
             )}
           </Grid>
