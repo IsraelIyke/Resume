@@ -10,6 +10,7 @@ import BgInfo from "../AccountComponent/BgInfo";
 import WorkExp from "../AccountComponent/WorkExp";
 import Education from "../AccountComponent/Education";
 import Language from "../AccountComponent/Language";
+import Password from "../AccountComponent/Password";
 
 export default function Account({ session }) {
   const [home, setHome] = useState(true);
@@ -225,6 +226,15 @@ export default function Account({ session }) {
                 key={session.user.id}
                 session={session}
                 handleTemplateOne={handleTemplateOne}
+              />
+            )}
+          </Grid>
+          <Grid item xs={12} className="account-container">
+            {password && (
+              <Password
+                key={session.user.id}
+                session={session}
+                handlePassword={handlePassword}
               />
             )}
           </Grid>
