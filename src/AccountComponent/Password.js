@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Textfield from "../pages/Textfield/textfield";
+import { supabase } from "../client";
 
 export default function Password({ session }) {
   const [pass, setPass] = useState(null);
@@ -11,24 +12,28 @@ export default function Password({ session }) {
 
   return (
     <>
-      <h2>Change Password</h2>
-      <Textfield
-        type="password"
-        placeholder="Change password"
-        id="pass"
-        label="Change password"
-        setState={setPass}
-        value={pass}
-      />
       <div className="input-container">
-        <button
-          className="signup-button"
-          onClick={() =>
-            Password({
-              pass,
-            })
-          }
-        ></button>
+        <h2>Change Password</h2>
+        <div className="input-container">
+          <Textfield
+            type="password"
+            placeholder="Change password"
+            id="pass"
+            label="Change password"
+            setState={setPass}
+            value={pass}
+          />
+        </div>
+        <div className="input-container">
+          <button
+            className="signup-button"
+            onClick={() =>
+              Password({
+                pass,
+              })
+            }
+          ></button>
+        </div>
       </div>
     </>
   );

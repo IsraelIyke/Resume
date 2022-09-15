@@ -115,7 +115,7 @@ export default function Login() {
             <h5>
               Forgot your password?
               <Link to="/password-recovery">
-                <span className="link-span">click here</span>
+                <span className="link-span"> click here</span>
               </Link>
             </h5>
           </Grid>
