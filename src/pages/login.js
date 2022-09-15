@@ -6,6 +6,7 @@ import Textfield from "./Textfield/textfield";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -19,6 +20,7 @@ export default function Login() {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  async function handlePasswordEmail() {}
   const handleClick = () => {
     setOpen(true);
   };
@@ -109,6 +111,14 @@ export default function Login() {
               value={password}
             />
           </Grid>
+          <Grid item>
+            <h5>
+              Forgot your password?
+              <Link to="/password-recovery">
+                <span className="link-span">click here</span>
+              </Link>
+            </h5>
+          </Grid>
           <Grid item xs={12} md={12}>
             <button
               className="signup-button"
@@ -119,6 +129,14 @@ export default function Login() {
             >
               {(loading && "loading") || "Login"}
             </button>
+          </Grid>
+          <Grid item>
+            <h5>
+              Don't have an account?
+              <Link to="/register">
+                <span className="link-span"> sign up</span>
+              </Link>
+            </h5>
           </Grid>
         </form>
       </Grid>

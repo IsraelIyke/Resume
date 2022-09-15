@@ -13,7 +13,10 @@ a {
 body {
   background-color: hsl(39, 77%, 96%);
 }
-
+.link-span {
+  color: hsl(39, 77%, 26%);
+  text-decoration: none;
+}
 .container {
   height: 101.8vh;
   position: relative;
@@ -159,6 +162,7 @@ header .nav-btn {
     margin-left: -2rem;
   }
 }
+
 @media screen and (max-width: 800px) {
   .detail {
     margin: 5rem 1.5rem 1rem 1.5rem;

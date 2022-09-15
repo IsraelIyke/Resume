@@ -8,10 +8,9 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -25,10 +24,14 @@ export default function Register() {
 
     setOpen(false);
   };
-  const handleLogin = async (email) => {
+  const handleChangePassword = async (email) => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signUp({ email, password });
+
+      let { data, error } = await supabase.auth.api.resetPasswordForEmail(
+        email
+      );
+
       if (error) {
         throw error;
       } else {
@@ -62,7 +65,7 @@ export default function Register() {
         </Grid>
         <form className="form-container">
           <Grid item>
-            <h2>Sign Up</h2>
+            <h2>Password Recovery</h2>
             <br />
           </Grid>
           <Grid item>
@@ -70,7 +73,7 @@ export default function Register() {
               open={open}
               autoHideDuration={6000}
               onClose={handleClose}
-              message="Success! Verify email if this is your first sign up"
+              message="Success! Please check your email"
               action={action}
             />
           </Grid>
@@ -85,33 +88,16 @@ export default function Register() {
             />
           </Grid>
           <Grid item xs={12} md={12}>
-            <Textfield
-              type="password"
-              placeholder="Password"
-              id="password"
-              label="Password"
-              setState={setPassword}
-              value={password}
-            />
-          </Grid>
-          <Grid item xs={12} md={12}>
             <button
+              style={{ width: "20rem" }}
               className="signup-button"
               onClick={(e) => {
                 e.preventDefault();
-                handleLogin(email);
+                handleChangePassword(email);
               }}
             >
-              {(loading && "loading") || "Register"}
+              {(loading && "loading") || "Send Password Recovery Email"}
             </button>
-          </Grid>
-          <Grid item>
-            <h5>
-              Already have an account?
-              <Link to="/account">
-                <span className="link-span"> sign in</span>
-              </Link>
-            </h5>
           </Grid>
         </form>
       </Grid>

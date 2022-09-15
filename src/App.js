@@ -5,6 +5,7 @@ import Register from "./pages/register";
 import "./App.css";
 import Auth from "./pages/Auth";
 import { P404 } from "./pages/404";
+import ChangePassword from "./pages/PasswordChange";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Auth />} />
+          <Route path="/password-recovery" element={<ChangePassword />} />
           <Route path="*" element={<P404 />} />
         </Routes>
       </Router>
