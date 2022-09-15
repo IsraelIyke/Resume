@@ -126,18 +126,3 @@
 .temp-dashs {
   margin-left: -0.7rem;
 }
-
-@media screen and (max-width: 767px) {
-  .template-A4-container {
-    width: 393px;
-  }
-  .margining {
-    margin-top: 5rem;
-  }
-}
-
-@media screen and (max-width: 899px) and (min-width: 767px) {
-  .template-A4-container {
-    width: 550px;
-  }
-}

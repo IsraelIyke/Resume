@@ -7,12 +7,11 @@ import linkedin from "../images/linkedin.png";
 import email from "../images/email.png";
 import mobile from "../images/mobile.png";
 import location from "../images/location.png";
-import temp from "../images/temp1.jpg";
+import temp from "../images/temp2.jpg";
 import * as React from "react";
 import Backdrop from "@mui/material/Backdrop";
 
-
-export default function TemplateOne({ session }) {
+export default function TemplateTwo({ session }) {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
