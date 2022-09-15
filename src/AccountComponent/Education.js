@@ -4,6 +4,13 @@ import Textfield from "../pages/Textfield/textfield";
 import Datefield from "./DatePicker/datefield";
 import Inputfield from "./Inputfield/inputfield";
 // import { Grid, Box } from "@mui/material";
+import * as React from "react";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Education({ session, handleLanguage }) {
   const [loading, setLoading] = useState(true);
@@ -20,6 +27,30 @@ export default function Education({ session, handleLanguage }) {
   const [dto2, setDTo2] = useState(null);
 
   const [counter, setCounter] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [errors, setErrors] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handle = () => {
+    setError(true);
+  };
+  const handles = () => {
+    setErrors(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+    setError(false);
+    setErrors(false);
+  };
 
   function handleCountAdd() {
     setCounter((prev) => prev + 1);
@@ -76,7 +107,8 @@ export default function Education({ session, handleLanguage }) {
         setCounter(data.counter);
       }
     } catch (error) {
-      alert(error.message);
+      // alert(error.message);
+      handles();
     } finally {
       setLoading(false);
     }
@@ -119,9 +151,12 @@ export default function Education({ session, handleLanguage }) {
         throw error;
       }
 
-      alert("updated");
+      // alert("updated");
+      handleClick();
     } catch (error) {
-      alert(error.message);
+      // alert(error.message);
+      setErrorMessage(error.message);
+      handle();
     } finally {
       setLoading(false);
     }
@@ -130,6 +165,31 @@ export default function Education({ session, handleLanguage }) {
     <div className="work-exp-container">
       <div className="input-container">
         <h2>Education</h2>
+      </div>
+      <div>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Success!
+          </Alert>
+        </Snackbar>
+        <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            {errorMessage === "Request Failed"
+              ? "Please check internet connection"
+              : errorMessage}
+          </Alert>
+        </Snackbar>
+        <Snackbar open={errors} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            {errorMessage === "Request Failed"
+              ? "Please check internet connection"
+              : errorMessage}
+          </Alert>
+        </Snackbar>
       </div>
       <div className="ac-container">
         {counter < 3 && (

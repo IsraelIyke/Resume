@@ -5,16 +5,24 @@ import { Grid, Box } from "@mui/material";
 import Textfield from "./Textfield/textfield";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [open, setOpen] = React.useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleClick = () => {
     setOpen(true);
+  };
+  const handle = () => {
+    setError(true);
   };
 
   const handleClose = (event, reason) => {
@@ -23,6 +31,7 @@ export default function ChangePassword() {
     }
 
     setOpen(false);
+    setError(false);
   };
   const handleChangePassword = async (email) => {
     try {
@@ -38,25 +47,15 @@ export default function ChangePassword() {
         handleClick();
       }
     } catch (error) {
-      alert("This is an error message!");
-      alert(error.message);
+      // alert("This is an error message!");
+      // alert(error.message);
+      setErrorMessage(error.message);
+      handle();
     } finally {
       setLoading(false);
     }
   };
 
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        X
-      </IconButton>
-    </React.Fragment>
-  );
   return (
     <Box sx={{ flexGrow: 1 }} className="container">
       <Grid container spacing={2} justifyContent="center">
@@ -69,13 +68,31 @@ export default function ChangePassword() {
             <br />
           </Grid>
           <Grid item>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                Success! Check your email for a one-time session link into your
+                account
+              </Alert>
+            </Snackbar>
             <Snackbar
-              open={open}
+              open={error}
               autoHideDuration={6000}
               onClose={handleClose}
-              message="Success! Please check your email"
-              action={action}
-            />
+            >
+              <Alert
+                onClose={handleClose}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                {errorMessage === "Request Failed"
+                  ? "Please check internet connection"
+                  : errorMessage}
+              </Alert>
+            </Snackbar>
           </Grid>
           <Grid item xs={12} md={12}>
             <Textfield

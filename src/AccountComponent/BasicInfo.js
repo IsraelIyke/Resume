@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { supabase } from "../client";
 import Textfield from "../pages/Textfield/textfield";
 // import { Grid, Box } from "@mui/material";
+import * as React from "react";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function BasicInfo({ session, handleBgInfo }) {
   const [loading, setLoading] = useState(true);
@@ -13,6 +20,30 @@ export default function BasicInfo({ session, handleBgInfo }) {
   const [zipCode, setZipCode] = useState(null);
   const [phone, setPhone] = useState(null);
   const [linkedIn, setLinkedIn] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [errors, setErrors] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handle = () => {
+    setError(true);
+  };
+  const handles = () => {
+    setErrors(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+    setError(false);
+    setErrors(false);
+  };
 
   useEffect(() => {
     getProfile();
@@ -51,7 +82,8 @@ export default function BasicInfo({ session, handleBgInfo }) {
         setLinkedIn(data.linkedIn);
       }
     } catch (error) {
-      alert(error.message);
+      // alert(error.message);
+      handles();
     } finally {
       setLoading(false);
     }
@@ -84,15 +116,41 @@ export default function BasicInfo({ session, handleBgInfo }) {
         throw error;
       }
 
-      alert("updated");
+      handleClick();
     } catch (error) {
-      alert(error.message);
+      setErrorMessage(error.message);
+      handle();
     } finally {
       setLoading(false);
     }
   }
   return (
     <div>
+      <div>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Success!
+          </Alert>
+        </Snackbar>
+        <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            {errorMessage === "Request Failed"
+              ? "Please check internet connection"
+              : errorMessage}
+          </Alert>
+        </Snackbar>
+        <Snackbar open={errors} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            {errorMessage === "Request Failed"
+              ? "Please check internet connection"
+              : errorMessage}
+          </Alert>
+        </Snackbar>
+      </div>
       <div className="input-container">
         <h2>Contact Info</h2>
       </div>

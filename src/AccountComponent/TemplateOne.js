@@ -10,10 +10,39 @@ import location from "../images/location.png";
 import temp from "../images/temp1.jpg";
 import * as React from "react";
 import Backdrop from "@mui/material/Backdrop";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function TemplateOne({ session }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [errors, setErrors] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handle = () => {
+    setError(true);
+  };
+  const handles = () => {
+    setErrors(true);
+  };
+
+  const handleCloses = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+    setError(false);
+    setErrors(false);
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -193,7 +222,8 @@ export default function TemplateOne({ session }) {
         setLanguage3(data.language3);
       }
     } catch (error) {
-      alert(error.message);
+      // alert(error.message);
+      handles();
     }
   }
 
@@ -224,6 +254,31 @@ export default function TemplateOne({ session }) {
           Please switch to a larger screen for better download. Tap anywhere to
           continue anyways
         </Backdrop>
+      </div>
+      <div>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleCloses}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Success!
+          </Alert>
+        </Snackbar>
+        <Snackbar open={error} autoHideDuration={6000} onClose={handleCloses}>
+          <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
+            {errorMessage === "Request Failed"
+              ? "Please check internet connection"
+              : errorMessage}
+          </Alert>
+        </Snackbar>
+        <Snackbar open={errors} autoHideDuration={6000} onClose={handleCloses}>
+          <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
+            {errorMessage === "Request Failed"
+              ? "Please check internet connection"
+              : errorMessage}
+          </Alert>
+        </Snackbar>
       </div>
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs={7}>

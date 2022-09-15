@@ -20,7 +20,6 @@ export default function Login() {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  async function handlePasswordEmail() {}
   const handleClick = () => {
     setOpen(true);
   };
@@ -72,7 +71,7 @@ export default function Login() {
                 severity="success"
                 sx={{ width: "100%" }}
               >
-                This is a success message!
+                Success!
               </Alert>
             </Snackbar>
             <Snackbar
