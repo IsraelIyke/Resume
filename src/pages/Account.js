@@ -15,11 +15,13 @@ export default function Account({ session }) {
   const [home, setHome] = useState(true);
   const [basicInfo, setBasicInfo] = useState(false);
   const [templateOne, setTemplateOne] = useState(false);
+  const [templateTwo, setTemplateTwo] = useState(false);
   const [skill, setSkill] = useState(false);
   const [bgInfo, setBgInfo] = useState(false);
   const [workExp, setWorkExp] = useState(false);
   const [education, setEducation] = useState(false);
   const [language, setLanguage] = useState(false);
+  const [password, setPassword] = useState(false);
 
   function handleBasicInfo() {
     setHome(false);
@@ -30,6 +32,8 @@ export default function Account({ session }) {
     setWorkExp(false);
     setEducation(false);
     setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
   }
   function handleTemplateOne() {
     setHome(false);
@@ -40,6 +44,20 @@ export default function Account({ session }) {
     setWorkExp(false);
     setEducation(false);
     setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
+  }
+  function handleTemplateTwo() {
+    setHome(false);
+    setBasicInfo(false);
+    setTemplateOne(false);
+    setSkill(false);
+    setBgInfo(false);
+    setWorkExp(false);
+    setEducation(false);
+    setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(true);
   }
   function handleSkill() {
     setHome(false);
@@ -50,6 +68,8 @@ export default function Account({ session }) {
     setWorkExp(false);
     setEducation(false);
     setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
   }
   function handleBgInfo() {
     setHome(false);
@@ -60,6 +80,8 @@ export default function Account({ session }) {
     setWorkExp(false);
     setEducation(false);
     setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
   }
   function handleWorkExp() {
     setHome(false);
@@ -70,6 +92,8 @@ export default function Account({ session }) {
     setWorkExp(true);
     setEducation(false);
     setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
   }
   function handleEducation() {
     setHome(false);
@@ -80,6 +104,8 @@ export default function Account({ session }) {
     setWorkExp(false);
     setEducation(true);
     setLanguage(false);
+    setPassword(false);
+    setTemplateTwo(false);
   }
   function handleLanguage() {
     setHome(false);
@@ -90,6 +116,20 @@ export default function Account({ session }) {
     setWorkExp(false);
     setEducation(false);
     setLanguage(true);
+    setPassword(false);
+    setTemplateTwo(false);
+  }
+  function handlePassword() {
+    setHome(false);
+    setBasicInfo(false);
+    setTemplateOne(false);
+    setSkill(false);
+    setBgInfo(false);
+    setWorkExp(false);
+    setEducation(false);
+    setLanguage(false);
+    setPassword(true);
+    setTemplateTwo(false);
   }
 
   return (
@@ -98,7 +138,7 @@ export default function Account({ session }) {
         <Grid item xs={12}>
           <Nav key={session.user.id} session={session} />
         </Grid>
-        <Grid item xs={1} md={3}>
+        <Grid item xs={1} sm={4} md={3}>
           <Paper className="account-side">
             <h4>Infomation</h4>
             <p onClick={handleBasicInfo}>Contact Info</p>
@@ -109,43 +149,84 @@ export default function Account({ session }) {
             <p onClick={handleLanguage}>Language</p>
             <h4>Template</h4>
             <p onClick={handleTemplateOne}>Template One</p>
-            <p>Template Two</p>
-            <h4>Editing</h4>
-            <p>Edit Details</p>
+            <p onClick={handleTemplateTwo}>Template Two</p>
+            <h4>Account</h4>
+            <p onClick={handlePassword}>Change Password</p>
           </Paper>
         </Grid>
-        <Grid item xs={11} md={9}>
+        <Grid item xs={12} sm={8} md={9}>
           <Grid item xs={12} className="account-container">
             {home && (
               <Dashboard
                 key={session.user.id}
                 session={session}
                 handleBasicInfo={handleBasicInfo}
+                handlePassword={handlePassword}
               />
             )}
           </Grid>
           <Grid item xs={12} className="account-container">
-            {basicInfo && <BasicInfo key={session.user.id} session={session} />}
-          </Grid>
-          <Grid item xs={12} className="account-container">
-            {templateOne && (
-              <TemplateOne key={session.user.id} session={session} />
+            {basicInfo && (
+              <BasicInfo
+                key={session.user.id}
+                session={session}
+                handleBgInfo={handleBgInfo}
+              />
             )}
           </Grid>
           <Grid item xs={12} className="account-container">
-            {skill && <Skill key={session.user.id} session={session} />}
+            {templateOne && (
+              <TemplateOne
+                key={session.user.id}
+                session={session}
+                handleSkill={handleSkill}
+              />
+            )}
           </Grid>
           <Grid item xs={12} className="account-container">
-            {bgInfo && <BgInfo key={session.user.id} session={session} />}
+            {skill && (
+              <Skill
+                key={session.user.id}
+                session={session}
+                handleWorkExp={handleWorkExp}
+              />
+            )}
           </Grid>
           <Grid item xs={12} className="account-container">
-            {workExp && <WorkExp key={session.user.id} session={session} />}
+            {bgInfo && (
+              <BgInfo
+                key={session.user.id}
+                session={session}
+                handleSkill={handleSkill}
+              />
+            )}
           </Grid>
           <Grid item xs={12} className="account-container">
-            {education && <Education key={session.user.id} session={session} />}
+            {workExp && (
+              <WorkExp
+                key={session.user.id}
+                session={session}
+                handleEducation={handleEducation}
+              />
+            )}
           </Grid>
           <Grid item xs={12} className="account-container">
-            {language && <Language key={session.user.id} session={session} />}
+            {education && (
+              <Education
+                key={session.user.id}
+                session={session}
+                handleLanguage={handleLanguage}
+              />
+            )}
+          </Grid>
+          <Grid item xs={12} className="account-container">
+            {language && (
+              <Language
+                key={session.user.id}
+                session={session}
+                handleTemplateOne={handleTemplateOne}
+              />
+            )}
           </Grid>
         </Grid>
       </Grid>

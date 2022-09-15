@@ -5,7 +5,7 @@ import Datefield from "./DatePicker/datefield";
 import Inputfield from "./Inputfield/inputfield";
 // import { Grid, Box } from "@mui/material";
 
-export default function WorkExp({ session }) {
+export default function WorkExp({ session, handleEducation }) {
   const [loading, setLoading] = useState(true);
   //   experience one
   const [exp1, setExp1] = useState(null);
@@ -551,7 +551,8 @@ export default function WorkExp({ session }) {
             Remove Experience
           </button>
         )}
-
+      </div>
+      <div className="input-container">
         <button
           className="signup-button"
           onClick={() =>
@@ -585,6 +586,9 @@ export default function WorkExp({ session }) {
           }
         >
           {(loading && "Loading") || "update"}
+        </button>
+        <button onClick={handleEducation} className="signup-button">
+          Next
         </button>
       </div>
     </div>

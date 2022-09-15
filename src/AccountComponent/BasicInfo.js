@@ -3,7 +3,7 @@ import { supabase } from "../client";
 import Textfield from "../pages/Textfield/textfield";
 // import { Grid, Box } from "@mui/material";
 
-export default function BasicInfo({ session }) {
+export default function BasicInfo({ session, handleBgInfo }) {
   const [loading, setLoading] = useState(true);
   const [firstName, setFirstName] = useState(null); //
   const [lastName, setLastName] = useState(null);
@@ -201,6 +201,10 @@ export default function BasicInfo({ session }) {
           }
         >
           {(loading && "Loading") || "update"}
+        </button>
+
+        <button onClick={handleBgInfo} className="signup-button">
+          Next
         </button>
       </div>
     </div>

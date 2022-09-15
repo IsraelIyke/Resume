@@ -3,7 +3,7 @@ import { supabase } from "../client";
 import Textfield from "../pages/Textfield/textfield";
 // import { Grid, Box } from "@mui/material";
 
-export default function Skill({ session }) {
+export default function Skill({ session, handleWorkExp }) {
   const [loading, setLoading] = useState(true);
   const [skill1, setSkill1] = useState(null);
   const [skill2, setSkill2] = useState(null);
@@ -133,7 +133,7 @@ export default function Skill({ session }) {
   return (
     <div>
       <div className="input-container">
-        <h2>Contact Info</h2>
+        <h2>Skills</h2>
       </div>
       <div className="acc-container">
         {count < 12 && (
@@ -302,7 +302,9 @@ export default function Skill({ session }) {
             Remove Skill
           </button>
         )}
+      </div>
 
+      <div className="input-container">
         <button
           className="signup-button"
           onClick={() =>
@@ -324,6 +326,9 @@ export default function Skill({ session }) {
           }
         >
           {(loading && "Loading") || "update"}
+        </button>
+        <button onClick={handleWorkExp} className="signup-button">
+          Next
         </button>
       </div>
     </div>

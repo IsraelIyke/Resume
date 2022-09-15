@@ -5,7 +5,7 @@ import Datefield from "./DatePicker/datefield";
 import Inputfield from "./Inputfield/inputfield";
 // import { Grid, Box } from "@mui/material";
 
-export default function Education({ session }) {
+export default function Education({ session, handleLanguage }) {
   const [loading, setLoading] = useState(true);
   //   education one
   const [edu1, setEdu1] = useState(null);
@@ -242,7 +242,8 @@ export default function Education({ session }) {
             Remove
           </button>
         )}
-
+      </div>
+      <div className="input-container">
         <button
           className="signup-button"
           onClick={() =>
@@ -260,6 +261,9 @@ export default function Education({ session }) {
           }
         >
           {(loading && "Loading") || "update"}
+        </button>
+        <button onClick={handleLanguage} className="signup-button">
+          Next
         </button>
       </div>
     </div>

@@ -20,9 +20,6 @@ export default function Home() {
             to your liking
           </div>
         </Grid>
-        <Grid item xs={10}>
-          <img src={Bg} className="image" alt="resume" />
-        </Grid>
         <Grid item xs={12} justifyContent="center">
           <div className="button-container">
             <Link to="/register">
@@ -30,6 +27,10 @@ export default function Home() {
             </Link>
           </div>
         </Grid>
+        <Grid item xs={10}>
+          <img src={Bg} className="image" alt="resume" />
+        </Grid>
+
         <Grid item xs={12}>
           <div className="footer">
             Copyright © 2022 ezy, All rights reserved

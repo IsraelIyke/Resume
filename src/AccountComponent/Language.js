@@ -3,7 +3,7 @@ import { supabase } from "../client";
 import Textfield from "../pages/Textfield/textfield";
 // import { Grid, Box } from "@mui/material";
 
-export default function Language({ session }) {
+export default function Language({ session, handleTemplateOne }) {
   const [loading, setLoading] = useState(true);
   const [language1, setLanguage1] = useState(null);
   const [language2, setLanguage2] = useState(null);
@@ -82,7 +82,7 @@ export default function Language({ session }) {
   return (
     <div>
       <div className="input-container">
-        <h2>Contact Info</h2>
+        <h2>Language</h2>
       </div>
       <div className="acc-container">
         {counting < 12 && (
@@ -135,7 +135,8 @@ export default function Language({ session }) {
             Remove
           </button>
         )}
-
+      </div>
+      <div className="input-container">
         <button
           className="signup-button"
           onClick={() =>
@@ -148,6 +149,9 @@ export default function Language({ session }) {
           }
         >
           {(loading && "Loading") || "update"}
+        </button>
+        <button onClick={handleTemplateOne} className="signup-button">
+          Template
         </button>
       </div>
     </div>

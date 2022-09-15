@@ -202,14 +202,14 @@ export default function TemplateOne({ session }) {
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs={7}>
           <button
-            className="signup-button"
+            className="signup-button margining"
             onClick={generatePdf}
             type="primary"
           >
             Download Pdf
           </button>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={12} md={7}>
           <div id="content" className="template-A4-container">
             <div>
               <img className="A4-img" src={temp} alt="bg" />
@@ -230,17 +230,18 @@ export default function TemplateOne({ session }) {
                     </div>
                   </Grid>
                   <Grid item>
-                    <div className="temp-linkedin">
-                      <img src={linkedin} alt="i" />
-                      {linkedIn}
-                    </div>
-                  </Grid>
-                  <Grid item>
                     <div className="temp-phone">
                       <img src={mobile} alt="i" />
                       {phone}
                     </div>
                   </Grid>
+                  <Grid item>
+                    <div className="temp-linkedin">
+                      <img src={linkedin} alt="i" />
+                      {linkedIn}
+                    </div>
+                  </Grid>
+
                   <Grid item>
                     <div className="temp-location">
                       <img src={location} alt="i" className="location-icon" />
