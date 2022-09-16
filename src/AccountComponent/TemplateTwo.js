@@ -265,7 +265,7 @@ export default function TemplateTwo({ session }) {
             Download Pdf
           </button>
         </Grid>
-        <Grid item xs={12} sm={11} md={7}>
+        <Grid item xs={7} sm={11} md={7}>
           <div id="content" className="template-A4-container">
             <div>
               <img className="A4-img" src={temp} alt="bg" />
