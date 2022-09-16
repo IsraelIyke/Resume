@@ -23,12 +23,6 @@ export default function TemplateTwo({ session }) {
   const [errors, setErrors] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleClick = () => {
-    setOpen(true);
-  };
-  const handle = () => {
-    setError(true);
-  };
   const handles = () => {
     setErrors(true);
   };
@@ -223,6 +217,7 @@ export default function TemplateTwo({ session }) {
       }
     } catch (error) {
       // alert(error.message);
+      setErrorMessage(error.message);
       handles();
     }
   }

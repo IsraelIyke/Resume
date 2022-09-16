@@ -129,6 +129,10 @@
 
 @media screen and (max-width: 768px) {
   .template-A4-container {
-    margin-left: 10rem;
+    margin-left: 17rem;
+    margin-right: 1rem;
+  }
+  .margining {
+    margin-left: 6rem;
   }
 }
