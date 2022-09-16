@@ -213,6 +213,7 @@ export default function TemplateOne({ session }) {
       }
     } catch (error) {
       // alert(error.message);
+      setErrorMessage(error.message);
       handles();
     }
   }
@@ -248,7 +249,7 @@ export default function TemplateOne({ session }) {
       <div>
         <Snackbar open={errors} autoHideDuration={6000} onClose={handleCloses}>
           <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
-            {errorMessage === "Request Failed"
+            {errorMessage === "FetchError: Failed to fetch"
               ? "Please check internet connection"
               : errorMessage}
           </Alert>
@@ -264,7 +265,7 @@ export default function TemplateOne({ session }) {
             Download Pdf
           </button>
         </Grid>
-        <Grid item xs={7} sm={12} md={7}>
+        <Grid item xs={7} sm={11} md={7}>
           <div id="content" className="template-A4-container">
             <div>
               <img className="A4-img" src={temp} alt="bg" />
