@@ -126,3 +126,9 @@
 .temp-dashs {
   margin-left: -0.7rem;
 }
+
+@media screen and (max-width: 768px) {
+  .template-A4-container {
+    margin-left: 10rem;
+  }
+}
