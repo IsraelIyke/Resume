@@ -19,16 +19,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export default function TemplateOne({ session }) {
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState(false);
   const [errors, setErrors] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleClick = () => {
-    setOpen(true);
-  };
-  const handle = () => {
-    setError(true);
-  };
   const handles = () => {
     setErrors(true);
   };
@@ -37,9 +30,6 @@ export default function TemplateOne({ session }) {
     if (reason === "clickaway") {
       return;
     }
-
-    setOpen(false);
-    setError(false);
     setErrors(false);
   };
 
@@ -48,7 +38,7 @@ export default function TemplateOne({ session }) {
   };
 
   useEffect(() => {
-    if (width < 768) {
+    if (width < 992) {
       setOpen(!open);
     }
   }, []);
@@ -256,13 +246,6 @@ export default function TemplateOne({ session }) {
         </Backdrop>
       </div>
       <div>
-        <Snackbar open={error} autoHideDuration={6000} onClose={handleCloses}>
-          <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
-            {errorMessage === "Request Failed"
-              ? "Please check internet connection"
-              : errorMessage}
-          </Alert>
-        </Snackbar>
         <Snackbar open={errors} autoHideDuration={6000} onClose={handleCloses}>
           <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
             {errorMessage === "Request Failed"

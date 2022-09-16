@@ -19,7 +19,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export default function TemplateTwo({ session }) {
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState(false);
   const [errors, setErrors] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -31,9 +30,6 @@ export default function TemplateTwo({ session }) {
     if (reason === "clickaway") {
       return;
     }
-
-    setOpen(false);
-    setError(false);
     setErrors(false);
   };
 
@@ -42,7 +38,7 @@ export default function TemplateTwo({ session }) {
   };
 
   useEffect(() => {
-    if (width < 768) {
+    if (width < 992) {
       setOpen(!open);
     }
   }, []);
@@ -251,22 +247,6 @@ export default function TemplateTwo({ session }) {
         </Backdrop>
       </div>
       <div>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert
-            onClose={handleCloses}
-            severity="success"
-            sx={{ width: "100%" }}
-          >
-            Success!
-          </Alert>
-        </Snackbar>
-        <Snackbar open={error} autoHideDuration={6000} onClose={handleCloses}>
-          <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
-            {errorMessage === "Request Failed"
-              ? "Please check internet connection"
-              : errorMessage}
-          </Alert>
-        </Snackbar>
         <Snackbar open={errors} autoHideDuration={6000} onClose={handleCloses}>
           <Alert onClose={handleCloses} severity="error" sx={{ width: "100%" }}>
             {errorMessage === "Request Failed"
