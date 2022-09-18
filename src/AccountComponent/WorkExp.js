@@ -93,19 +93,21 @@ export default function WorkExp({ session, handleEducation }) {
       setExp2(null);
       setTo2(null);
       setFrom2(null);
-      setChecker1(false);
       setChecker2(false);
-      setChecker3(false);
       setCompany2(null);
+      setAch2a(null);
+      setAch2b(null);
+      setAch2c(null);
     }
     if (counts === 2) {
-      setExp2(null);
-      setTo2(null);
-      setFrom2(null);
-      setChecker1(false);
-      setChecker2(false);
+      setExp3(null);
+      setTo3(null);
+      setFrom3(null);
       setChecker3(false);
-      setCompany2(null);
+      setCompany3(null);
+      setAch3a(null);
+      setAch3b(null);
+      setAch3c(null);
     }
   }
   function handleCount1Minus() {
