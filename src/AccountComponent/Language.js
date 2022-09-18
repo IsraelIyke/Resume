@@ -113,6 +113,7 @@ export default function Language({ session, handleTemplateOne }) {
     } finally {
       setLoading(false);
     }
+    handleTemplateOne();
   }
   return (
     <div>
@@ -208,11 +209,11 @@ export default function Language({ session, handleTemplateOne }) {
             })
           }
         >
-          {(loading && "Loading") || "update"}
+          {(loading && "Loading") || "Template"}
         </button>
-        <button onClick={handleTemplateOne} className="signup-button">
+        {/* <button onClick={handleTemplateOne} className="signup-button">
           Template
-        </button>
+        </button> */}
       </div>
     </div>
   );

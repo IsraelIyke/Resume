@@ -50,6 +50,10 @@ export default function WorkExp({ session, handleEducation }) {
   const [errors, setErrors] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [checker1, setChecker1] = useState(false);
+  const [checker2, setChecker2] = useState(false);
+  const [checker3, setChecker3] = useState(false);
+
   const handleClick = () => {
     setOpen(true);
   };
@@ -89,12 +93,18 @@ export default function WorkExp({ session, handleEducation }) {
       setExp2(null);
       setTo2(null);
       setFrom2(null);
+      setChecker1(false);
+      setChecker2(false);
+      setChecker3(false);
       setCompany2(null);
     }
     if (counts === 2) {
       setExp2(null);
       setTo2(null);
       setFrom2(null);
+      setChecker1(false);
+      setChecker2(false);
+      setChecker3(false);
       setCompany2(null);
     }
   }
@@ -148,7 +158,7 @@ export default function WorkExp({ session, handleEducation }) {
           ach3a,
           ach3b,
           ach3c,
-          count3, counts`
+          count3, counts, checker1, checker2, checker3`
         ) //
         .eq("id", user.id)
         .single();
@@ -182,6 +192,9 @@ export default function WorkExp({ session, handleEducation }) {
         setAch3c(data.ach3c);
         setCount3(data.count3);
         setCounts(data.counts);
+        setChecker1(data.checker1);
+        setChecker2(data.checker2);
+        setChecker3(data.checker3);
       }
     } catch (error) {
       // alert(error.message);
@@ -217,6 +230,9 @@ export default function WorkExp({ session, handleEducation }) {
     ach3c,
     count3,
     counts,
+    checker1,
+    checker2,
+    checker3,
   }) {
     //
     try {
@@ -249,6 +265,9 @@ export default function WorkExp({ session, handleEducation }) {
         ach3c,
         count3,
         counts,
+        checker1,
+        checker2,
+        checker3,
         updated_at: new Date(),
       };
 
@@ -269,6 +288,7 @@ export default function WorkExp({ session, handleEducation }) {
     } finally {
       setLoading(false);
     }
+    handleEducation();
   }
   return (
     <div className="work-exp-container">
@@ -288,14 +308,14 @@ export default function WorkExp({ session, handleEducation }) {
         <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
             {errorMessage === "Request Failed"
-              ? "Please check internet connection"
+              ? "Please checker internet connection"
               : errorMessage}
           </Alert>
         </Snackbar>
         <Snackbar open={errors} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
             {errorMessage === "Request Failed"
-              ? "Please check internet connection"
+              ? "Please checker internet connection"
               : errorMessage}
           </Alert>
         </Snackbar>
@@ -344,6 +364,20 @@ export default function WorkExp({ session, handleEducation }) {
               label="To"
               setState={setTo1}
               value={to1}
+            />
+          </div>
+        )}
+        {counts < 3 && (
+          <div className="input-container">
+            <label htmlFor="checker1" style={{ fontSize: "0.8rem" }}>
+              still working here?
+              <span style={{ color: "transparent" }}>_</span>
+            </label>
+            <input
+              type="checkbox"
+              id="checker1"
+              checked={checker1}
+              onChange={(e) => setChecker1(e.target.checked)}
             />
           </div>
         )}
@@ -447,6 +481,20 @@ export default function WorkExp({ session, handleEducation }) {
             />
           </div>
         )}
+        {counts > 0 && counts < 3 && (
+          <div className="input-container">
+            <label htmlFor="checker2" style={{ fontSize: "0.8rem" }}>
+              still working here?
+              <span style={{ color: "transparent" }}>_</span>
+            </label>
+            <input
+              type="checkbox"
+              id="checker2"
+              checked={checker2}
+              onChange={(e) => setChecker2(e.target.checked)}
+            />
+          </div>
+        )}
 
         <div className="input-container">
           {counts > 0 && counts < 3 && count2 < 2 && (
@@ -547,7 +595,20 @@ export default function WorkExp({ session, handleEducation }) {
             />
           </div>
         )}
-
+        {counts > 1 && counts < 3 && (
+          <div className="input-container">
+            <label htmlFor="checker3" style={{ fontSize: "0.8rem" }}>
+              still working here?
+              <span style={{ color: "transparent" }}>_</span>
+            </label>
+            <input
+              type="checkbox"
+              id="checker3"
+              checked={checker3}
+              onChange={(e) => setChecker3(e.target.checked)}
+            />
+          </div>
+        )}
         <div className="input-container">
           {counts > 1 && counts < 3 && count3 < 3 && (
             <button onClick={handleCount3Add} className="signup-button">
@@ -642,14 +703,17 @@ export default function WorkExp({ session, handleEducation }) {
               ach3c,
               count3,
               counts,
+              checker1,
+              checker2,
+              checker3,
             })
           }
         >
-          {(loading && "Loading") || "update"}
+          {(loading && "Loading") || "Next"}
         </button>
-        <button onClick={handleEducation} className="signup-button">
+        {/* <button onClick={handleEducation} className="signup-button">
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );

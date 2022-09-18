@@ -17,10 +17,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function TemplateTwo({ session }) {
+export default function TemplateOne({ session }) {
   const [open, setOpen] = useState(false);
   const [errors, setErrors] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [checker1, setChecker1] = useState(false);
+  const [checker2, setChecker2] = useState(false);
+  const [checker3, setChecker3] = useState(false);
 
   const handles = () => {
     setErrors(true);
@@ -149,7 +152,7 @@ export default function TemplateTwo({ session }) {
           edu2,
           school2,
           dfrom2,
-          dto2, language1,language2,language3`
+          dto2, language1, language2, language3, checker1, checker2, checker3`
         ) //
         .eq("id", user.id)
         .single();
@@ -158,6 +161,9 @@ export default function TemplateTwo({ session }) {
         throw error;
       }
       if (data) {
+        setChecker1(data.checker1);
+        setChecker2(data.checker2);
+        setChecker3(data.checker3);
         setFirstName(data.firstName); //
         setLastName(data.lastName);
         setProfession(data.profession);
@@ -181,21 +187,34 @@ export default function TemplateTwo({ session }) {
         setExp1(data.exp1);
         setCompany1(data.company1);
         setFrom1(data.from1);
-        setTo1(data.to1);
+        if (data.checker1) {
+          setTo1("present");
+          console.log(checker1);
+        } else {
+          setTo1(data.to1);
+        }
         setAch1a(data.ach1a);
         setAch1b(data.ach1b);
         setAch1c(data.ach1c);
         setExp2(data.exp2);
         setCompany2(data.company2);
         setFrom2(data.from2);
-        setTo2(data.to2);
+        if (data.checker2) {
+          setTo2("present");
+        } else {
+          setTo2(data.to2);
+        }
         setAch2a(data.ach2a);
         setAch2b(data.ach2b);
         setAch2c(data.ach2c);
         setExp3(data.exp3);
         setCompany3(data.company3);
         setFrom3(data.from3);
-        setTo3(data.to3);
+        if (data.checker3) {
+          setTo3("present");
+        } else {
+          setTo3(data.to3);
+        }
         setAch3a(data.ach3a);
         setAch3b(data.ach3b);
         setAch3c(data.ach3c);
@@ -265,7 +284,7 @@ export default function TemplateTwo({ session }) {
             Download Pdf
           </button>
         </Grid>
-        <Grid item xs={12} sm={11} md={7}>
+        <Grid item xs={7} sm={11} md={7}>
           <div id="content" className="template-A4-container">
             <div>
               <img className="A4-img" src={temp} alt="bg" />

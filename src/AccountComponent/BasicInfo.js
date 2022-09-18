@@ -90,7 +90,6 @@ export default function BasicInfo({ session, handleBgInfo }) {
   }
 
   async function updateProfile({ firstName }) {
-    //
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -123,6 +122,7 @@ export default function BasicInfo({ session, handleBgInfo }) {
     } finally {
       setLoading(false);
     }
+    handleBgInfo();
   }
   return (
     <div>
@@ -258,12 +258,12 @@ export default function BasicInfo({ session, handleBgInfo }) {
             })
           }
         >
-          {(loading && "Loading") || "update"}
+          {(loading && "Loading") || "Next"}
         </button>
 
-        <button onClick={handleBgInfo} className="signup-button">
+        {/* <button onClick={handleBgInfo} className="signup-button">
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );

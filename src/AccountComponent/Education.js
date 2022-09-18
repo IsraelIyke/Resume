@@ -160,6 +160,7 @@ export default function Education({ session, handleLanguage }) {
     } finally {
       setLoading(false);
     }
+    handleLanguage();
   }
   return (
     <div className="work-exp-container">
@@ -320,11 +321,11 @@ export default function Education({ session, handleLanguage }) {
             })
           }
         >
-          {(loading && "Loading") || "update"}
+          {(loading && "Loading") || "Next"}
         </button>
-        <button onClick={handleLanguage} className="signup-button">
+        {/* <button onClick={handleLanguage} className="signup-button">
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );

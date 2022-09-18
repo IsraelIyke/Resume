@@ -164,6 +164,7 @@ export default function Skill({ session, handleWorkExp }) {
     } finally {
       setLoading(false);
     }
+    handleWorkExp();
   }
   return (
     <div>
@@ -385,11 +386,11 @@ export default function Skill({ session, handleWorkExp }) {
             })
           }
         >
-          {(loading && "Loading") || "update"}
+          {(loading && "Loading") || "Next"}
         </button>
-        <button onClick={handleWorkExp} className="signup-button">
+        {/* <button onClick={handleWorkExp} className="signup-button">
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -102,6 +102,7 @@ export default function BgInfo({ session, handleSkill }) {
     } finally {
       setLoading(false);
     }
+    handleSkill();
   }
   return (
     <div>
@@ -161,11 +162,11 @@ export default function BgInfo({ session, handleSkill }) {
             })
           }
         >
-          {(loading && "Loading") || "update"}
+          {(loading && "Loading") || "Next"}
         </button>
-        <button onClick={handleSkill} className="signup-button">
+        {/* <button onClick={handleSkill} className="signup-button">
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );
